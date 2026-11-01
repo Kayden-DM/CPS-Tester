@@ -1,24 +1,47 @@
-CPS Tester
-A GUI Python app built with CustomTkinter that measures how many times you can click per second within a chosen time limit.
+## CPS Tester
+A desktop click-speed tester built with CustomTkinter. It lets the user set a time limit, click as fast as possible for that duration, and calculates their clicks per second (CPS) at the end.
 
-Concepts Used
-CustomTkinter GUI — builds labels, an entry, and buttons with a dark theme.
+## Features
+Custom Time Limit — Enter any positive number of seconds to set the game length.
 
-root.after() — schedules the tick() countdown every 1000ms without blocking the UI.
+Start Button — Begins the countdown and enables the click button while locking the input fields.
 
-Global Variables — score, time_left, and start_time are shared and updated across functions.
+Click Counter — Adds a point to the score each time the click button is pressed.
 
-Features
-Custom Time Limit — the user enters how many seconds the test runs, with validation for numbers and positive values.
+Live Countdown — Updates the time label every second using root.after().
 
-Live Countdown — time_label updates each second while the click button counts taps.
+CPS Result — Divides the final score by the starting time and displays it to 2 decimal places.
 
-CPS Calculation — on time-up, displays clicks-per-second to two decimals and disables the button.
+Input Validation — Rejects non-numeric and non-positive time values with a clear message.
 
-Improvements
-Prevent Repeat Starts — starting a game twice or clicking before the timer ends isn't guarded; a running flag would block re-entry.
+Dark Mode UI — CustomTkinter dark appearance with a blue accent theme.
 
-Fix Division Edge Case — score / start_time in time_end() is fine, but if start_time somehow resets to 0 it errors; guard it or store the initial duration separately.
+## Technologies Used
+text
+| Technology | Purpose |
+|---|---|
+| Python | Application logic |
+| `customtkinter` | Desktop GUI |
+| `CTk`, `CTkLabel`, `CTkEntry`, `CTkButton` | Widgets for the interface |
+| `root.after()` | Schedules the countdown ticks |
+| `global` | Updates `score`, `time_left`, and `start_time` |
+| `try / except` | Handles invalid time input |
+| f-strings | Formats the score, time, and CPS labels |
+<!-- -->
+## How to Use It
+Install Python 3.6 or newer from python.org and make sure it's added to your PATH.
 
-Reset & Replay — after a round the score and entry stay locked; add a reset button so users can run multiple tests without restarting the app.
+Install CustomTkinter by running pip install customtkinter.
 
+Save the code as cps_tester.py.
+
+Open a terminal in the folder containing the file.
+
+Run python cps_tester.py.
+
+Enter a time in seconds, click Start, and press the big button as many times as you can before the timer runs out.
+
+## Improvements
+Add a restart button — once the timer ends, the click button stays disabled and the entry stays locked, so the only way to play again is to restart the program; a reset function would let the user try again without relaunching.
+
+Handle division by zero — cps = score / start_time would crash if start_time were 0, which can happen if the timing logic ever changes; guarding against that case would make it safer.
