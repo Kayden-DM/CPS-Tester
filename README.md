@@ -17,7 +17,6 @@ Input Validation — Rejects non-numeric and non-positive time values with a cle
 Dark Mode UI — CustomTkinter dark appearance with a blue accent theme.
 
 ## Technologies Used
-text
 | Technology | Purpose |
 |---|---|
 | Python | Application logic |
